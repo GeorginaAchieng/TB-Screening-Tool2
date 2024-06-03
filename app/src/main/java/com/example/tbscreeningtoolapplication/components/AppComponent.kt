@@ -163,8 +163,7 @@ fun OutlinedTextFieldPassword(labelValue: String) {
 fun CheckboxComponent(value: String){
     Row(modifier= Modifier
         .fillMaxWidth()
-        .heightIn(28.dp)
-        .padding(5.dp),
+        .heightIn(28.dp),
         verticalAlignment = Alignment.CenterVertically,
         content = {
             val checkedState = remember {
@@ -181,7 +180,7 @@ fun CheckboxComponent(value: String){
 }
 @Composable
 fun ClickableTextComponent(value: String) {
-    val initialText = "By continuing you our"
+    val initialText = "By continuing you accept our"
     val privacyPolicyText = "Privacy Policy "
     val andText = "and"
     val termsAndConditionText = " Terms of Use"

@@ -15,7 +15,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tbscreeningtoolapplication.R
 import com.example.tbscreeningtoolapplication.components.CheckboxComponent
-import com.example.tbscreeningtoolapplication.components.ClickableTextComponent
 import com.example.tbscreeningtoolapplication.components.HeadingTextComponent
 import com.example.tbscreeningtoolapplication.components.NormalTextComponent
 import com.example.tbscreeningtoolapplication.components.OutlinedTextField
