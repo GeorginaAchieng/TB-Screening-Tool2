@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">TBScreeningToolApplication</string>
     <string name="tb_screening">TB Screening App</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="SimpleOutlinedTextField">SimpleOutlinedTextField</string>
+    <string name="terms_and_conditions">By continuing you our Privacy Policy and Terms of Use</string>
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="clickable_text_component">clickable</string>
 </resources>
