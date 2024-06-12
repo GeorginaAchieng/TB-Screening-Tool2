@@ -1,10 +1,24 @@
 package com.example.tbscreeningtoolapplication.components
 
+import android.app.Notification
+import android.app.Notification.Style
 import android.util.Log
+import android.view.textclassifier.TextSelection
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -13,7 +27,10 @@ import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -25,6 +42,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -33,6 +53,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontSynthesis.Companion.Style
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -42,9 +63,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.Dimension.Companion.value
 import com.example.tbscreeningtoolapplication.R
 import com.example.tbscreeningtoolapplication.ui.theme.Pink40
 import com.example.tbscreeningtoolapplication.ui.theme.Purple40
+import com.example.tbscreeningtoolapplication.ui.theme.PurpleGrey40
+import com.example.tbscreeningtoolapplication.ui.theme.PurpleGrey80
+import kotlin.math.log
 
 @Composable
 fun NormalTextComponent(value:String){
@@ -207,7 +232,91 @@ fun ClickableTextComponent(value: String) {
             }
         )}
 }
+@Composable
+fun ButtonComponent(value: String){
+    Button(onClick = { /*TODO*/ },
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(48.dp),
+        contentPadding = PaddingValues(),
+        colors = ButtonDefaults.buttonColors(Color.Transparent)
+    )
+    {
+Box(modifier = Modifier
+    .fillMaxWidth()
+    .heightIn(48.dp)
+    .background(
+        brush = Brush.horizontalGradient(listOf(PurpleGrey40, Purple40)),
+        shape = RoundedCornerShape(50.dp)
+    ),
+    contentAlignment = Alignment.Center
+){
+    Text(text = value,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold)
 
+}
+        
+    }
+}
+@Composable
+fun DividerTextComponent(){
+    Row(modifier = Modifier.fillMaxWidth(),
+    verticalAlignment = Alignment.CenterVertically){
+        Divider(modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f),
+            color = Color.Gray,
+            thickness = 1.dp)
+
+        Text(modifier = Modifier.padding(8.dp), 
+            text = (stringResource(id = R.string.or)),
+            fontSize = 18.sp, color = PurpleGrey80)
+        Divider(modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f),
+            color = Color.Gray,
+            thickness = 1.dp)
+    }
+}
+
+
+@Composable
+fun ClickableLoginTextComponent(onTextSelected:(String)->Unit) {
+    val initialText = "Already have an account?"
+    val loginText = " Login"
+
+
+    val annotatedString = buildAnnotatedString {
+        append(initialText)
+        withStyle(style = SpanStyle(color = Purple40)) {
+            pushStringAnnotation(tag = loginText, annotation = loginText)
+            append(loginText)
+        }
+
+        }
+        ClickableText(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(40.dp),
+            style = TextStyle(
+                fontSize = 21.sp,
+                fontWeight = FontWeight.Normal,
+                fontFamily = FontFamily.Default,
+                fontStyle = FontStyle.Normal,
+                textAlign = TextAlign.Center
+            ),
+            text = annotatedString , onClick = { offset ->
+            annotatedString.getStringAnnotations(offset, offset)
+                .firstOrNull()?.also { span ->
+                    Log.d("ClickableTextComponent", "{$span}")
+                }
+
+
+
+
+        }
+        )}
 
 
 

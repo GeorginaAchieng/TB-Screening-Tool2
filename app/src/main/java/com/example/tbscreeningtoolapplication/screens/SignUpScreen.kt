@@ -14,7 +14,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tbscreeningtoolapplication.R
+import com.example.tbscreeningtoolapplication.components.ButtonComponent
 import com.example.tbscreeningtoolapplication.components.CheckboxComponent
+import com.example.tbscreeningtoolapplication.components.ClickableLoginTextComponent
+//import com.example.tbscreeningtoolapplication.components.ClickableLoginTextComponent
+import com.example.tbscreeningtoolapplication.components.DividerTextComponent
 import com.example.tbscreeningtoolapplication.components.HeadingTextComponent
 import com.example.tbscreeningtoolapplication.components.NormalTextComponent
 import com.example.tbscreeningtoolapplication.components.OutlinedTextField
@@ -26,8 +30,8 @@ import com.example.tbscreeningtoolapplication.components.OutlinedTextFieldPasswo
 fun SignUpScreen(){
     Surface(modifier = Modifier
         .fillMaxSize()
-        .padding(28.dp)
         .background(Color.White)
+        .padding(28.dp)
         ){
         Column(modifier = Modifier.fillMaxSize()) {
             NormalTextComponent(value = stringResource(id = R.string.tb_screening))
@@ -38,6 +42,13 @@ fun SignUpScreen(){
             OutlinedTextField2(labelValue = "Email")
             OutlinedTextFieldPassword(labelValue = "Password")
             CheckboxComponent(value = stringResource(id = R.string.terms_and_conditions))
+            Spacer(modifier = Modifier.height(40.dp))
+            ButtonComponent(value = stringResource(id = R.string.register))
+            Spacer(modifier = Modifier.height(10.dp))
+            DividerTextComponent()
+            ClickableLoginTextComponent(onTextSelected = {})
+
+
 
 
 

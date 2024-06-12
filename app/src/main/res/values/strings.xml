@@ -4,7 +4,12 @@
     <string name="create_an_account">Create an Account</string>
     <string name="SimpleOutlinedTextField">SimpleOutlinedTextField</string>
     <string name="terms_and_conditions">By continuing you accept our Privacy Policy and Terms of Use</string>
+    <string name="terms_and_conditions_header">By continuing you accept our Privacy Policy and Terms of Use</string>
     <string name="show_password">Show Password</string>
     <string name="hide_password">Hide Password</string>
     <string name="clickable_text_component">clickable</string>
+    <string name="register">Register</string>
+    <string name="or">Or</string>
+    <string name="go_to_login">Already have an account? Login</string>
+    <string name="loginText">Login</string>
 </resources>
